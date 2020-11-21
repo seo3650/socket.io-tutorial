@@ -9,12 +9,4 @@ server.listen(portNo, () => {
 const socketio = require("socket.io");
 const io = socketio.listen(server);
 
-io.on("connection", (socket) => {
-  console.log("Login: ", socket.client.id);
-
-  // Recieve message
-  socket.on("chat-msg", (msg) => {
-    console.log("message: ", msg);
-    io.emit("chat-msg", msg);
-  });
-});
+// TODO 1: Server socket setting

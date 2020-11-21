@@ -5,7 +5,7 @@ import * as serviceWorker from "./serviceWorker";
 import styles from "./styles.js";
 
 import socketio from "socket.io-client";
-const socket = socketio.connect("http://localhost:3001");
+// TODO 2: connect socket
 
 class ChatForm extends React.Component {
   constructor(props) {
@@ -20,10 +20,7 @@ class ChatForm extends React.Component {
   }
 
   send() {
-    socket.emit("chat-msg", {
-      name: this.state.name,
-      message: this.state.message,
-    });
+    // TODO3: Emit chat-msg
     this.setState({ message: "" });
   }
 
@@ -55,11 +52,7 @@ class ChatApp extends React.Component {
     };
   }
   componentDidMount() {
-    socket.on("chat-msg", (obj) => {
-      obj.key = "key_" + (this.state.logs.legth + 1);
-      console.log(obj);
-      this.setState({ logs: this.state.logs.concat([obj]) });
-    });
+    // TODO 4: Receive chat-msg
   }
 
   render() {
